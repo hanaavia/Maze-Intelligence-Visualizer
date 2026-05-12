@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Maze Intelligence Visualizer — Labyrinth</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <!-- ========== LANDING PAGE (interactive module) ========== -->
+  <section id="landing-page" class="page landing-experience active" aria-label="Interactive introduction">
+    <div class="landing-atmosphere" aria-hidden="true">
+      <div class="landing-fog landing-fog--1"></div>
+      <div class="landing-fog landing-fog--2"></div>
+      <canvas id="landing-map-canvas" class="landing-map-canvas"></canvas>
+      <div class="landing-parallax-layer"></div>
+    </div>
+
+    <div class="landing-inner">
+      <header class="story-reveal story-reveal--visible landing-hero">
+        <div class="landing-badge">DAA · Learn by doing</div>
+        <h1 class="landing-title">Maze Intelligence Visualizer</h1>
+        <p class="landing-lead">
+          Scroll through the story — then <strong>tap simulations</strong> before you ever open the labyrinth.
+        </p>
+      </header>
+
+      <section class="story-section story-reveal" data-story="maze">
+        <span class="story-num">01</span>
+        <h2 class="story-heading">What is a maze?</h2>
+        <p class="story-text">
+          A maze is a network of <strong>choices</strong>. Each step commits you to a corridor; dead ends force retreat.
+          Games teach intuition — algorithms teach <em>exactly</em> how escape is computed.
+        </p>
+        <div class="story-visual maze-icon-pulse" aria-hidden="true">
+          <div class="maze-icon-grid"></div>
+        </div>
+      </section>
+
+      <section class="story-section story-reveal story-section--graph" data-story="graph">
+        <span class="story-num">02</span>
+        <h2 class="story-heading">Maze as graph</h2>
+        <p class="story-text">
+          Every walkable cell is a <strong>node</strong>; every legal step is an <strong>edge</strong>.
+          Solving the maze = finding a route in that graph — from START to EXIT.
+        </p>
+        <div class="graph-schematic">
+          <div class="graph-node graph-node--s">S</div>
+          <span class="graph-edge"></span>
+          <div class="graph-node">·</div>
+          <span class="graph-edge"></span>
+          <div class="graph-node graph-node--e">E</div>
+        </div>
+        <p class="story-caption muted">Hover the highlighted algorithm names to see queue, stack, and priority queue in motion.</p>
+      </section>
+
+      <section class="story-section story-reveal" id="meet-bfs" data-story="bfs">
+        <span class="story-num">03</span>
+        <h2 class="story-heading">Meet <span class="kw-term kw-term--bfs" data-kw="bfs">BFS</span></h2>
+        <article class="algo-card-interactive algo-card-interactive--bfs" data-card="bfs" tabindex="0" role="button" aria-label="BFS interactive preview">
+          <div class="algo-card-interactive__head">
+            <span class="algo-chip">Breadth First Search</span>
+            <p class="algo-card-interactive__desc">
+              Explores in <strong>rings</strong>. A <span class="kw-term kw-term--bfs" data-kw="bfs">queue</span> guarantees the shortest hop-count path when edges cost the same.
+            </p>
+          </div>
+          <div class="landing-mini-wrap">
+            <div id="landing-demo-bfs" class="landing-mini-grid" aria-live="polite"></div>
+            <div class="landing-mini-legend mono" id="landing-demo-bfs-caption">Tap card or button</div>
+          </div>
+          <button type="button" class="btn btn-secondary btn-sim" data-run-demo="bfs">Try simulation</button>
+        </article>
+      </section>
+
+      <section class="story-section story-reveal" id="meet-dfs" data-story="dfs">
+        <span class="story-num">04</span>
+        <h2 class="story-heading">Meet <span class="kw-term kw-term--dfs" data-kw="dfs">DFS</span></h2>
+        <article class="algo-card-interactive algo-card-interactive--dfs" data-card="dfs" tabindex="0" role="button" aria-label="DFS interactive preview">
+          <div class="algo-card-interactive__head">
+            <span class="algo-chip algo-chip--dfs">Depth First Search</span>
+            <p class="algo-card-interactive__desc">
+              Dives deep first. Uses a <span class="kw-term kw-term--dfs" data-kw="dfs">stack</span> — watch <strong>backtracking</strong> when paths dead-end.
+            </p>
+          </div>
+          <div class="landing-mini-wrap">
+            <div id="landing-demo-dfs" class="landing-mini-grid" aria-live="polite"></div>
+            <div class="landing-mini-legend mono" id="landing-demo-dfs-caption">Tap card or button</div>
+          </div>
+          <button type="button" class="btn btn-secondary btn-sim" data-run-demo="dfs">Try simulation</button>
+        </article>
+      </section>
+
+      <section class="story-section story-reveal" id="meet-dijkstra" data-story="dijkstra">
+        <span class="story-num">05</span>
+        <h2 class="story-heading">Meet <span class="kw-term kw-term--dij" data-kw="dijkstra">Dijkstra</span></h2>
+        <article class="algo-card-interactive algo-card-interactive--dij" data-card="dijkstra" tabindex="0" role="button" aria-label="Dijkstra interactive preview">
+          <div class="algo-card-interactive__head">
+            <span class="algo-chip algo-chip--dij">Dijkstra</span>
+            <p class="algo-card-interactive__desc">
+              Each corridor has a <strong>cost</strong>. A <span class="kw-term kw-term--dij" data-kw="dijkstra">priority queue</span> expands the cheapest frontier first.
+            </p>
+          </div>
+          <div class="landing-mini-wrap">
+            <div id="landing-demo-dij" class="landing-mini-grid landing-mini-grid--weights" aria-live="polite"></div>
+            <div class="landing-mini-legend mono" id="landing-demo-dij-caption">Tap card or button</div>
+          </div>
+          <button type="button" class="btn btn-secondary btn-sim" data-run-demo="dijkstra">Try simulation</button>
+        </article>
+      </section>
+
+      <section class="story-section story-reveal" id="story-compare" data-story="compare">
+        <span class="story-num">§</span>
+        <h2 class="story-heading">Algorithm speed comparison</h2>
+        <p class="story-text">
+          The same miniature maze runs <strong>BFS</strong> (left) and <strong>DFS</strong> (right) side by side.
+          Drag the slider to change step delay — BFS grows in layers while DFS snakes and backtracks.
+        </p>
+        <div class="compare-slider-row">
+          <label for="landing-compare-speed" class="compare-speed-label">Playback delay</label>
+          <input type="range" id="landing-compare-speed" min="2" max="10" value="5" />
+          <span id="landing-compare-speed-val" class="mono muted">medium</span>
+        </div>
+        <div class="compare-twin-grids">
+          <div class="compare-twin">
+            <span class="compare-twin-label">BFS</span>
+            <div id="landing-compare-bfs" class="landing-mini-grid landing-mini-grid--compare"></div>
+          </div>
+          <div class="compare-twin">
+            <span class="compare-twin-label">DFS</span>
+            <div id="landing-compare-dfs" class="landing-mini-grid landing-mini-grid--compare"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="story-section story-reveal story-section--playground" id="story-playground" data-story="play">
+        <span class="story-num">06</span>
+        <h2 class="story-heading">Try algorithm yourself</h2>
+        <p class="story-text">
+          Click cells to place <span class="tag start">START</span> then <span class="tag end">EXIT</span>. Run any solver — instant visualization on a living maze.
+        </p>
+        <div class="playground-toolbar">
+          <button type="button" id="landing-pg-reset" class="btn btn-ghost">Shuffle maze</button>
+          <span class="playground-hint mono muted" id="landing-pg-hint">First click: start · Second: exit</span>
+        </div>
+        <div id="landing-playground-grid" class="landing-mini-grid landing-mini-grid--play" aria-label="Playground maze"></div>
+        <div class="playground-actions">
+          <button type="button" id="landing-pg-bfs" class="btn btn-secondary">Run BFS</button>
+          <button type="button" id="landing-pg-dfs" class="btn btn-secondary">Run DFS</button>
+          <button type="button" id="landing-pg-dij" class="btn btn-secondary">Run Dijkstra</button>
+        </div>
+        <p class="landing-mini-legend mono" id="landing-pg-status"></p>
+      </section>
+
+      <footer class="story-section story-reveal landing-finale">
+        <h2 class="story-heading story-heading--center">Ready?</h2>
+        <p class="story-text story-text--center">
+          You have touched queues, stacks, costs, and side-by-side rhythm — enter the full labyrinth when you choose.
+        </p>
+        <button type="button" id="btn-start-simulation" class="btn btn-primary btn-large landing-enter-btn">
+          Enter the Maze
+        </button>
+        <p class="landing-footer muted">Design &amp; Analysis of Algorithms (DAA)</p>
+      </footer>
+    </div>
+
+    <div id="kw-tooltip" class="kw-tooltip" role="tooltip" hidden>
+      <div class="kw-tooltip__inner">
+        <strong class="kw-tooltip__title"></strong>
+        <div class="kw-tooltip__anim kw-tooltip__anim--queue" data-anim="bfs">
+          <span></span><span></span><span></span>
+          <span class="kw-tooltip__arrow">FIFO · dequeue → visit</span>
+        </div>
+        <div class="kw-tooltip__anim kw-tooltip__anim--stack" data-anim="dfs">
+          <span class="stack-label">top</span>
+          <span></span><span></span><span></span>
+          <span class="kw-tooltip__arrow">LIFO · pop on retreat</span>
+        </div>
+        <div class="kw-tooltip__anim kw-tooltip__anim--pq" data-anim="dijkstra">
+          <div class="pq-row"><span>n3</span><em>7</em></div>
+          <div class="pq-row pq-row--active"><span>n1</span><em>2</em></div>
+          <div class="pq-row"><span>n2</span><em>4</em></div>
+          <span class="kw-tooltip__arrow">min-heap extracts smallest cost</span>
+        </div>
+      </div>
+    </div>
+
+    <div id="landing-enter-transition" class="landing-enter-transition" hidden aria-hidden="true">
+      <div class="landing-enter-vignette"></div>
+      <div class="landing-enter-maze">
+        <div class="landing-enter-maze-grid"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== GAME PAGE ========== -->
+  <section id="game-page" class="page" aria-label="Maze simulation" hidden>
+    <nav class="game-topbar">
+      <button type="button" id="btn-back-landing" class="btn btn-ghost">← Introduction</button>
+      <h1 class="game-brand">Maze Intelligence Visualizer</h1>
+      <label class="ambient-toggle">
+        <input type="checkbox" id="chk-ambient" />
+        <span>Ambient wind</span>
+      </label>
+    </nav>
+
+    <div class="game-shell">
+      <aside class="panel panel-left" aria-label="Controls">
+        <h2 class="panel-title">Labyrinth</h2>
+
+        <div class="control-group">
+          <label for="select-size">Grid size</label>
+          <select id="select-size">
+            <option value="10">10 × 10</option>
+            <option value="20" selected>20 × 20</option>
+            <option value="30">30 × 30</option>
+          </select>
+        </div>
+
+        <div class="control-group">
+          <label for="select-mode">Game mode</label>
+          <select id="select-mode">
+            <option value="player">1 · Player Mode (arrow keys)</option>
+            <option value="bfs">2 · BFS Solver (shortest path)</option>
+            <option value="dfs">3 · DFS Explorer</option>
+            <option value="dijkstra">4 · Dijkstra (weighted)</option>
+            <option value="comparison">5 · Comparison (all three)</option>
+          </select>
+        </div>
+
+        <div id="solver-controls">
+          <div class="control-group">
+            <label for="range-speed">Animation speed <span id="speed-label" class="muted">medium</span></label>
+            <input type="range" id="range-speed" min="1" max="10" value="5" />
+          </div>
+          <div class="btn-row">
+            <button type="button" id="btn-run" class="btn btn-primary">Run visualization</button>
+          </div>
+          <div class="btn-row">
+            <button type="button" id="btn-step" class="btn btn-ghost" disabled>Step</button>
+            <button type="button" id="btn-pause" class="btn btn-ghost" disabled>Pause</button>
+            <button type="button" id="btn-reset-view" class="btn btn-ghost">Clear overlay</button>
+          </div>
+        </div>
+
+        <div id="player-controls" class="hidden">
+          <p class="player-hint mono">↑ ↓ ← → move · graph traversal in real time</p>
+          <div class="btn-row">
+            <button type="button" id="btn-hint-path" class="btn btn-secondary">Show hint path</button>
+          </div>
+          <div class="btn-row">
+            <button type="button" id="btn-hint-step" class="btn btn-secondary">Highlight next step</button>
+          </div>
+          <div class="btn-row">
+            <button type="button" id="btn-dismiss-hints" class="btn btn-ghost">Hide hints</button>
+          </div>
+        </div>
+
+        <div class="btn-row">
+          <button type="button" id="btn-generate" class="btn btn-secondary btn-block">New maze</button>
+        </div>
+
+        <div class="legend">
+          <h3 class="legend-title">Legend</h3>
+          <ul class="legend-list">
+            <li><span class="swatch wall"></span> Stone wall</li>
+            <li><span class="swatch path"></span> Sand path</li>
+            <li><span class="swatch start"></span> Start</li>
+            <li><span class="swatch end"></span> Exit</li>
+            <li><span class="swatch player-dot"></span> You</li>
+            <li><span class="swatch bfs-v"></span> BFS</li>
+            <li><span class="swatch dfs-v"></span> DFS</li>
+            <li><span class="swatch dij-v"></span> Dijkstra</li>
+            <li><span class="swatch hint-p"></span> BFS hint</li>
+          </ul>
+        </div>
+      </aside>
+
+      <main class="panel-center">
+        <div id="enter-overlay" class="enter-overlay" aria-modal="true" role="dialog">
+          <div class="enter-card">
+            <p class="enter-kicker">The ruins whisper</p>
+            <h2 class="enter-title">Enter the labyrinth</h2>
+            <p class="enter-text">Reach the ember gate. Your footsteps trace a live traversal on the graph — hints use BFS shortest paths.</p>
+            <button type="button" id="btn-enter-maze" class="btn btn-primary btn-large">Step inside</button>
+          </div>
+        </div>
+
+        <div id="maze-stage" class="maze-stage maze-stage--intro">
+          <canvas id="dust-canvas" class="dust-canvas" aria-hidden="true"></canvas>
+          <div class="maze-vignette" aria-hidden="true"></div>
+          <div class="maze-fog" aria-hidden="true"></div>
+          <div id="maze-zoom" class="maze-zoom">
+            <div class="maze-wrap">
+              <div id="maze-grid" class="maze-grid" role="grid" aria-label="Maze"></div>
+            </div>
+          </div>
+        </div>
+
+        <div id="frontier-bar" class="frontier-bar" aria-live="polite">
+          <span class="frontier-label">Status:</span>
+          <span id="frontier-content" class="frontier-content mono">—</span>
+        </div>
+      </main>
+
+      <aside class="panel panel-right" aria-label="Statistics and theory">
+        <h2 class="panel-title">Statistics</h2>
+        <dl class="stats" id="stats-panel">
+          <div><dt>Mode</dt><dd id="stat-algo">—</dd></div>
+          <div id="solver-stat-block">
+            <div><dt>Nodes visited</dt><dd id="stat-visited">0</dd></div>
+            <div><dt>Path length</dt><dd id="stat-path">—</dd></div>
+            <div><dt>Execution steps</dt><dd id="stat-steps">0</dd></div>
+            <div><dt>Simulated “time”</dt><dd id="stat-time">0</dd></div>
+          </div>
+          <div class="player-stats hidden" id="player-live-stats">
+            <div><dt>Your moves</dt><dd id="stat-player-moves">0</dd></div>
+            <div><dt>Elapsed</dt><dd id="stat-player-elapsed">0.0s</dd></div>
+          </div>
+          <div class="dijk-extra hidden" id="dijk-stats-row"><dt>Total path cost</dt><dd id="stat-cost">—</dd></div>
+        </dl>
+
+        <div id="comparison-box" class="comparison-box hidden">
+          <h3 class="sub-title">Comparison</h3>
+          <div class="table-wrap">
+            <table class="compare-table" id="compare-table">
+              <thead>
+                <tr>
+                  <th>Algorithm</th>
+                  <th>Path</th>
+                  <th>Visited</th>
+                  <th>Steps</th>
+                </tr>
+              </thead>
+              <tbody id="compare-body"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="theory-panel">
+          <h3 class="sub-title">DAA notes</h3>
+          <ul class="theory-list">
+            <li><strong>Player mode:</strong> Each move is an edge traversal — the trail you walk is a path in the graph. <strong>Hints</strong> reuse BFS from your cell to the exit.</li>
+            <li><strong>BFS:</strong> Shortest path in unweighted graphs; typical <span class="mono">O(V+E)</span>.</li>
+            <li><strong>DFS:</strong> Deep-first exploration; not necessarily shortest. <span class="mono">O(V+E)</span>.</li>
+            <li><strong>Dijkstra:</strong> Weighted shortest paths; ~<span class="mono">O((V+E) log V)</span> with a heap.</li>
+          </ul>
+          <p class="theory-note muted">Earthy ruin maze uses random edge weights for Dijkstra. Extra passages may create alternate routes.</p>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- Win modal -->
+  <div id="win-overlay" class="win-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="win-title">
+    <div class="win-card">
+      <p class="win-kicker">Ruins cleared</p>
+      <h2 id="win-title" class="win-title">ESCAPED SUCCESSFULLY</h2>
+      <dl class="win-stats">
+        <div><dt>Your moves</dt><dd id="win-moves">—</dd></div>
+        <div><dt>Time</dt><dd id="win-time">—</dd></div>
+        <div><dt>BFS optimal (moves)</dt><dd id="win-optimal">—</dd></div>
+        <div><dt>Efficiency</dt><dd id="win-efficiency">—</dd></div>
+      </dl>
+      <p class="win-note muted">Efficiency = floor(100 × BFS optimal moves ÷ your moves), capped at 100%.</p>
+      <div class="win-actions">
+        <button type="button" id="win-play-again" class="btn btn-primary">New maze</button>
+        <button type="button" id="win-close" class="btn btn-ghost">Stay &amp; explore</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
