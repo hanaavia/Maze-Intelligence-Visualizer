@@ -1,35 +1,230 @@
-# Maze-Intelligence-Visualizer
+<div align="center">
 
-1.)Safa Mashita (5025241022)
+<br/>
 
-2.)Acquirell Kriswanto (5025241035)
+```
+███╗   ███╗ █████╗ ███████╗███████╗
+████╗ ████║██╔══██╗╚══███╔╝██╔════╝
+██╔████╔██║███████║  ███╔╝ █████╗  
+██║╚██╔╝██║██╔══██║ ███╔╝  ██╔══╝  
+██║ ╚═╝ ██║██║  ██║███████╗███████╗
+╚═╝     ╚═╝╚═╝  ╚═╝╚══════╝╚══════╝
 
-3.)Via Hana Nurma Putri (5025241048)
+I N T E L L I G E N C E   V I S U A L I Z E R
+```
 
-An interactive, cinematic web-based educational tool designed to visualize and compare graph traversal algorithms. Built as an exploration of the **Design & Analysis of Algorithms (DAA)**, this project turns abstract computer science concepts into a tangible, playable experience.
+**An interactive, cinematic web experience that brings graph traversal algorithms to life.**  
+*Built for EF234405 — Design & Analysis of Algorithms*
 
-## Features
+<br/>
 
-* **Interactive Storytelling:** A landing experience that teaches the fundamental concepts of graphs, queues, stacks, and priority queues before you even enter the labyrinth.
-* **Algorithm Visualizer:** Watch algorithms solve dynamically generated mazes in real-time. Features step-by-step controls and adjustable animation speeds.
-  * **Breadth-First Search (BFS):** Guarantees the shortest path in unweighted graphs using a FIFO Queue.
-  * **Depth-First Search (DFS):** Explores deep into dead ends and backtracks using a LIFO Stack.
-  * **Dijkstra's Algorithm:** Finds the cheapest path through weighted terrain using a Min-Heap Priority Queue.
-* **Player Mode:** Traverse the graph manually using your arrow keys. Features a "Hint" system that runs a real-time BFS from your current position to the exit.
-* **Side-by-Side Comparison:** Run BFS, DFS, and Dijkstra simultaneously to compare path length, total execution steps, and the number of visited nodes.
-* **Cinematic UI/UX:** Features an earthy "ruins" aesthetic, dynamic dust particle rendering (Canvas API), and optional ambient wind audio generated via the Web Audio API.
+[![Live Demo](https://img.shields.io/badge/🌐%20Live%20Demo-Visit%20Website-2B4590?style=for-the-badge&labelColor=1A1A2E)](https://hanaavia.github.io/Maze-Intelligence-Visualizer/)
+[![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)](https://hanaavia.github.io/Maze-Intelligence-Visualizer/)
+[![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)](https://hanaavia.github.io/Maze-Intelligence-Visualizer/)
+[![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)](https://hanaavia.github.io/Maze-Intelligence-Visualizer/)
+[![No Dependencies](https://img.shields.io/badge/Dependencies-Zero-2dc653?style=for-the-badge)](https://hanaavia.github.io/Maze-Intelligence-Visualizer/)
 
-## Tech Stack
+<br/>
 
-This project is built entirely with vanilla web technologies. No external frameworks or libraries were used.
-* **HTML5:** Semantic structure and accessible interactive elements.
-* **CSS3:** Custom properties, grid/flexbox layouts, CSS animations, and complex gradients for the cinematic UI.
-* **Vanilla JavaScript (ES6+):** Logic for recursive backtracker maze generation, graph traversal algorithms, DOM manipulation, Min-Heap implementation, and custom Canvas/Audio loops.
+---
 
-## How to Run
+</div>
 
-Since this project uses pure HTML/CSS/JS, running it is incredibly simple:
+## ✦ What Is This?
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/hanaavia/maze-intelligence-visualizer.git
+> *A maze is not just a puzzle — it's a graph. Every cell is a node. Every corridor is an edge.*
+
+**Maze Intelligence Visualizer** turns abstract computer science theory into a **tangible, playable, cinematic experience**. Watch BFS, DFS, and Dijkstra's algorithm navigate a procedurally generated labyrinth in real time — step by step, cell by cell — and finally understand *why* they behave differently.
+
+No textbook diagrams. No static pseudocode. Just algorithms, alive.
+
+<br/>
+
+---
+
+## 🚀 Live Demo
+
+> **🌐 [https://hanaavia.github.io/Maze-Intelligence-Visualizer/](https://hanaavia.github.io/Maze-Intelligence-Visualizer/)**
+
+Open in any modern browser. No installation. No setup. Just enter the labyrinth.
+
+<br/>
+
+---
+
+## ✦ Features
+
+<br/>
+
+### 🎬 Interactive Storytelling
+Before you even enter the labyrinth, a **cinematic landing experience** teaches you everything you need to know — graphs, queues, stacks, priority queues — through animated mini-mazes and interactive demos. Theory becomes intuition.
+
+<br/>
+
+### 🧠 Algorithm Visualizer
+
+Watch three algorithms race through the same maze in real time. Use the **step-by-step controls** and **adjustable speed slider** to follow every decision.
+
+| Algorithm | Strategy | Frontier | Guarantees |
+|-----------|----------|----------|------------|
+| **BFS** — Breadth-First Search | Explore layer by layer | FIFO Queue 🟦 | Shortest path (unweighted) |
+| **DFS** — Depth-First Search | Dive deep, then backtrack | LIFO Stack 🟧 | Valid path (any) |
+| **Dijkstra's Algorithm** | Always expand cheapest node | Min-Heap PQ 🟣 | Shortest path (weighted) |
+
+<br/>
+
+### 🎮 Player Mode
+**Take control yourself.** Navigate the maze manually with your arrow keys. Get stuck? The built-in **Hint system** runs a live BFS from your current position to the exit and highlights the optimal next move.
+
+<br/>
+
+### ⚔️ Side-by-Side Comparison
+Run **BFS, DFS, and Dijkstra simultaneously** on the same maze and compare:
+- 📏 Path length
+- 👣 Nodes visited  
+- ⚡ Total execution steps
+- 💰 Total path cost (weighted)
+
+<br/>
+
+### 🏛️ Cinematic UI/UX
+- **Earthy "ruins" aesthetic** — deep navy, sand-gold, and ember accents
+- **Dynamic dust particles** rendered via the Canvas API
+- **Ambient wind audio** generated by the Web Audio API
+- Scroll-driven narrative with Intersection Observer animations
+
+<br/>
+
+---
+
+## ✦ Tech Stack
+
+> Built entirely with **vanilla web technologies**. Zero external frameworks. Zero dependencies.
+
+```
+📁 Maze-Intelligence-Visualizer/
+├── 📄 index.html      — Semantic structure & interactive elements
+├── 🎨 style.css       — CSS custom properties, grid/flexbox, animations
+└── ⚙️  script.js      — Algorithms, maze gen, DOM, Min-Heap, Canvas & Audio
+```
+
+| Technology | Usage |
+|------------|-------|
+| **HTML5** | Semantic structure, accessible interactive elements |
+| **CSS3** | Custom properties, grid/flexbox, complex gradients, keyframe animations |
+| **Vanilla JS (ES6+)** | Recursive Backtracker maze gen, BFS/DFS/Dijkstra, Min-Heap, Canvas/Audio |
+
+<br/>
+
+---
+
+## ✦ How to Run
+
+### Option 1 — Just open the live site 🌐
+**[https://hanaavia.github.io/Maze-Intelligence-Visualizer/](https://hanaavia.github.io/Maze-Intelligence-Visualizer/)**  
+No installation needed.
+
+### Option 2 — Run locally
+
+```bash
+# Clone the repository
+git clone https://github.com/hanaavia/maze-intelligence-visualizer.git
+
+# Enter the project directory
+cd maze-intelligence-visualizer
+
+# Open in your browser
+open index.html
+# — or just double-click index.html in your file explorer
+```
+
+That's it. Pure HTML/CSS/JS — no build step, no `npm install`, no config.
+
+<br/>
+
+---
+
+## ✦ Algorithms Implemented
+
+<details>
+<summary><b>🟦 Breadth-First Search (BFS)</b></summary>
+
+<br/>
+
+BFS explores the maze in **concentric rings of equal hop-count** from the start cell. By processing nodes layer by layer using a FIFO queue, it guarantees that the first time the exit is reached, the path found is the **shortest possible** in terms of number of moves.
+
+- **Data Structure:** Queue (FIFO) — `Array.shift()`
+- **Time Complexity:** O(V + E)
+- **Space Complexity:** O(V)
+- **Optimality:** ✅ Shortest path (unweighted)
+- **In-app colour:** 🟦 Blue cells
+
+</details>
+
+<details>
+<summary><b>🟧 Depth-First Search (DFS)</b></summary>
+
+<br/>
+
+DFS plunges as deep as possible along a single branch before backtracking. Implemented with an **explicit LIFO stack** (iterative, not recursive) to avoid JavaScript call-stack limits on large grids. Backtracking events are visually highlighted in the animation.
+
+- **Data Structure:** Stack (LIFO) — `Array.pop()`
+- **Time Complexity:** O(V + E)
+- **Space Complexity:** O(V)
+- **Optimality:** ❌ Not guaranteed — first path found, not shortest
+- **In-app colour:** 🟧 Orange cells
+
+</details>
+
+<details>
+<summary><b>🟣 Dijkstra's Algorithm</b></summary>
+
+<br/>
+
+Dijkstra finds the **minimum-cost path** through weighted terrain. Edge weights (1–9) are deterministically generated per-edge via a coordinate hash, ensuring reproducibility. Uses a custom **binary min-heap** with lazy stale-entry deletion instead of decrease-key.
+
+- **Data Structure:** Min-Heap Priority Queue
+- **Time Complexity:** O((V + E) log V)
+- **Space Complexity:** O(V)
+- **Optimality:** ✅ Minimum cost path (weighted)
+- **In-app colour:** 🟣 Purple cells
+
+</details>
+
+<details>
+<summary><b>🌀 Maze Generation — Recursive Backtracker</b></summary>
+
+<br/>
+
+The labyrinth is procedurally generated using a **randomised DFS** (Recursive Backtracker). Starting from (0,0), the algorithm carves passages into random unvisited neighbours until every cell has been visited, producing a *perfect maze* — fully connected with exactly one path between any two cells. Extra passages (~2.5% of walls) are then removed to introduce cycles for Dijkstra.
+
+</details>
+
+<br/>
+
+---
+
+## ✦ Team
+
+| | Name | Student ID |
+|---|------|------------|
+| 👤 | **Safa Mashita** | 5025241022 |
+| 👤 | **Acquirell Kriswanto** | 5025241035 |
+| 👤 | **Via Hana Nurma Putri** | 5025241048 |
+
+*Informatics Engineering — Institut Teknologi Sepuluh Nopember (ITS)*  
+*EF234405 Design & Analysis of Algorithms — Quiz 2, 2025/2026*
+
+<br/>
+
+---
+
+<div align="center">
+
+*"The maze is just a graph. The algorithm is just a decision. The difference is in the data structure."*
+
+<br/>
+
+**[⬆ Back to top](#)**
+
+</div>
